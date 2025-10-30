@@ -128,3 +128,26 @@ ol li {
   text-align: center;
   font-size: 16px;
 }
+.log-block {
+  background: #ffffff;
+  border: 1px solid #B2BCC6;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 15px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+}
+
+.log-block table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.log-block th {
+  font-size: 95%;
+  border-bottom: 1px solid #B2BCC6;
+}
+
+.log-block td {
+  font-size: 90%;
+  padding: 6px;
+}

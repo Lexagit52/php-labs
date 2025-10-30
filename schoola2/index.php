@@ -1,51 +1,55 @@
-<?php 
-  include 'inc/headers.inc.php'; 
-  include 'inc/cookie.inc.php'; 
+<?php
+define('PATH_LOG', 'log/path.log');
+
+
+include 'inc/log.inc.php';
 ?>
+
 <!DOCTYPE html>
-<html>
-
+<html lang="ru">
 <head>
-  <title><?=$title?></title>
-  <meta charset="utf-8" />
-  <link rel="stylesheet" type="text/css" href="inc/style.css" />
+    <meta charset="utf-8">
+    <title>Сайт нашей школы</title>
+    <link rel="stylesheet" href="schoola2\inc\style.css">
 </head>
-
 <body>
 
-  <div id="header">
-    <img src="logo.gif" width="187" height="29" alt="Наш логотип" class="logo" />
-    <span class="slogan">обо всём сразу</span>
-  </div>
-
-  <div id="content">
-    <h1><?= $header ?></h1>
-
-    <div class="cookie-block">
-      <?php if ($visitCounter == 1): ?>
-        <p>Спасибо, что зашли </p>
-      <?php else: ?>
-        <p>Вы зашли к нам <strong><?= $visitCounter ?></strong> раз(а).</p>
-        <p>Последнее посещение: <strong><?= $lastVisit ?></strong></p>
-      <?php endif; ?>
-    </div>
-
-    <?php include 'inc/routing.inc.php'; ?>
-  </div>
-
-  <div id="nav">
-    <h2>Навигация по сайту</h2>
+<nav>
     <ul>
-      <li><a href='index.php'>Домой</a></li>
-      <li><a href='index.php?id=contact'>Контакты</a></li>
-      <li><a href='index.php?id=about'>О нас</a></li>
-      <li><a href='index.php?id=info'>Информация</a></li>
-      <li><a href='index.php?id=gbook'>Гостевая книга</a></li>
-    </ul>
-  </div>
 
-  <div id="footer">
-    &copy; Супер-мега сайт, 2000 &ndash; <?= date('Y')?>
-  </div>
+        <li><a href="index.php?id=about">О нас</a></li>
+        <li><a href="index.php?id=contact">Контакты</a></li>
+        <li><a href="index.php?id=info">Информация</a></li>
+
+        <li><a href="index.php?id=log">Журнал посещений</a></li>
+    </ul>
+</nav>
+
+<main>
+<?php
+// Вывод содержимого страниц
+$id = $_GET['id'] ?? 'home';
+switch($id){
+    case 'about':
+        include 'inc/about.inc.php';
+        break;
+    case 'contact':
+        include 'inc/contact.inc.php';
+        break;
+    case 'info':
+        include 'inc/info.inc.php';
+        break;
+    case 'guest':
+        include 'inc/guest.inc.php';
+        break;
+    case 'log':
+        include 'inc/view-log.inc.php';
+        break;
+    default:
+        include 'inc/home.inc.php';
+}
+?>
+</main>
+
 </body>
 </html>
